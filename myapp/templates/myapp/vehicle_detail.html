@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ vehicle.name }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>{{ vehicle.name }}</h1>
+    <p>Details about the vehicle:</p>
+    <ul>
+        <li>Make: {{ vehicle.make }}</li>
+        <li>Model: {{ vehicle.model }}</li>
+        <li>Year: {{ vehicle.year }}</li>
+        <li>Price: ${{ vehicle.price }}</li>
+    </ul>
+    <a href="{% url 'vehicle_list' %}">Back to Vehicle List</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Vehicle List</h1>
+    <a href="{% url 'add_vehicle' %}">Add Vehicle</a>
+    <ul>
+        {% for vehicle in vehicles %}
+            <li>{{ vehicle.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
