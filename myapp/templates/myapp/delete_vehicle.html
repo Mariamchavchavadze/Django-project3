@@ -1,0 +1,19 @@
+<!-- myapp/templates/myapp/delete_vehicle.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Vehicle</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Delete Vehicle</h1>
+    <p>Are you sure you want to delete "{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <p></p>
+    <a href="{% url 'vehicle_list' %}">Cancel</a>
+</body>
+</html>

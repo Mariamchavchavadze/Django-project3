@@ -10,8 +10,23 @@
     <a href="{% url 'add_vehicle' %}">Add Vehicle</a>
     <ul>
         {% for vehicle in vehicles %}
-            <li>{{ vehicle.name }}</li>
+            <li>
+                {% if vehicle.image %}
+                    <img src="{{ vehicle.image.url }}" alt="Vehicle Image" style="max-width: 200px;">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <p> vehicle ID: {{ vehicle.id }}</p>
+                <p> vehicle VIN: {{ vehicle.VIN }}</p>
+                <p> vehicle year: {{ vehicle.year }} </p>
+                <p> vehicle make: {{ vehicle.make }}</p>
+                <p> vehicle model: {{ vehicle.model }}</p>
+                <p> vehicle color: {{ vehicle.color }}</p>
+
+                <a href="{% url 'delete_vehicle' vehicle.id %}">Delete</a>
+            </li>
         {% endfor %}
     </ul>
 </body>
 </html>
+

@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Add Vehicle</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Add Vehicle</button>

@@ -9,9 +9,11 @@ def vehicle_list(request):
     return render(request, 'myapp/vehicle_list.html', {'vehicles': vehicles})
 
 
+# myapp/views.py
+
 def add_vehicle(request):
     if request.method == 'POST':
-        form = VehicleForm(request.POST)
+        form = VehicleForm(request.POST, request.FILES)  # Include request.FILES
         if form.is_valid():
             form.save()
             return redirect('vehicle_list')
@@ -25,4 +27,9 @@ def vehicle_detail(request, vehicle_id):
     return render(request, 'myapp/vehicle_detail.html', {'vehicle': vehicle})
 
 
-# myapp/views.py
+def delete_vehicle(request, vehicle_id):
+    vehicle = get_object_or_404(Vehicle, id=vehicle_id)
+    if request.method == 'POST':
+        vehicle.delete()
+        return redirect('vehicle_list')
+    return render(request, 'myapp/delete_vehicle.html', {'vehicle': vehicle})
